@@ -17,10 +17,14 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/login_page', function () {
+Route::get('/login', function () {
     return view('/authentication/login');
 });
 
-Route::get('/register_page', function () {
+Route::get('/register', function () {
     return view('/authentication/register');
+});
+
+Route::get('/card', function () {
+    return view('card');
 });
