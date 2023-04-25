@@ -1,0 +1,15 @@
+session message style mindenhol !!!!
+
+!!!!!!!!!!!
+registration bonus
+
+inventoryba user id szerint nezze
+
+form submission
+    cart nal buy succes
+
+
+kerdesek
+    cartnal ha mar invetoryba van usert is nezze mert igy nem tud mas user felvenni cartba kartyat
+    coint adja hozza a balancehoz amikor vege a jateknak
+    registration bonus
