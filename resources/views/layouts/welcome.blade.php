@@ -23,17 +23,18 @@
             background-repeat: no-repeat;
             background-size: cover;
             height: 100vh;">
-    <nav class="w-128 mx-auto flex justify-between py-8 text-2xl text-white items-center">
+    <nav class="w-128 mx-auto flex justify-between py-8 text-lg text-white items-center">
         <div>
-            <p class="text-3xl font-bold">GCC</p>
+            <a href="{{ url('/') }}" class="text-2xl font-bold">Genuine Car Cards</a>
         </div>
         <div class="flex items-center gap-4">
-            <a class="px-3 py-2 bg-zinc-700 rounded-xl hover:text-white hover:bg-zinc-600 ease-in duration-200" href="">Home</a>
-            <a class="px-3 py-2 bg-zinc-700 rounded-xl hover:text-white hover:bg-zinc-600 ease-in duration-200" href="">The Cards</a>
-            <a class="px-3 py-2 bg-zinc-700 border-2 border-purple-800 hover:text-white hover:bg-zinc-600 ease-in duration-200 uppercase" href="{{url('register')}}">Join Now</a>
+            <a class="px-3 py-2 bg-zinc-700 rounded-xl hover:text-white hover:bg-zinc-600 ease-in duration-200 flex items-center gap-2" href="{{ url('login') }}"><i class="fa-solid fa-house-chimney"></i> Home</a>
+            <a class="px-3 py-2 bg-zinc-700 rounded-xl hover:text-white hover:bg-zinc-600 ease-in duration-200 flex items-center gap-2" href="{{ url('the-shop') }}"><i class="fa-solid fa-store"></i> The Shop</a>
+            <a class="px-3 py-2 bg-zinc-700 rounded-xl hover:text-white hover:bg-zinc-600 ease-in duration-200 flex items-center gap-2" href="{{ url('the-game') }}"><i class="fa-solid fa-gamepad"></i> The Game</a>
+            <a class="px-3 py-2 bg-zinc-700 border-2 border-purple-800 hover:text-white hover:bg-zinc-600 ease-in duration-200 uppercase" href="{{ url('register') }}">Join Now</a>
         </div>
     </nav>
-    <main class="w-128 mx-auto ">
+    <main class="w-128 mx-auto">
         @yield('main_content')
     </main>
 </body>

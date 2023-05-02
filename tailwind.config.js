@@ -24,6 +24,12 @@ module.exports = {
                 combine: "1fr 1px 1fr",
                 game: "1fr 200px 1fr",
             },
+            inset: {
+                fourty: "41%",
+            },
+            margin: {
+                welcome: "12%",
+            },
         },
     },
     plugins: [],

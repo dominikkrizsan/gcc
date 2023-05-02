@@ -7,16 +7,24 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Inventory;
+use App\Models\Deck;
+use App\Models\Game;
+use App\Models\Card;
+use App\Models\Bot;
 
 class UserController extends Controller
 {
-    // dashboard -------------------------------------------
+    // dashboard index -------------------------------------------
 
-    public function userCount()
+    public function countData()
     {
         $countUser = User::count();
         $countSoldCards = Inventory::count();
-        return view('admin.index', compact('countUser', 'countSoldCards'));
+        $countCraftedCards = Deck::latest('id')->first();
+        $countAllGames = Game::count();
+        $countBots = Bot::count();
+        $countCardsPublished = Card::count();
+        return view('admin.index', compact('countUser', 'countSoldCards', 'countCraftedCards', 'countAllGames', 'countBots', 'countCardsPublished'));
     }
 
     // users -----------------------------------------------
@@ -74,6 +82,17 @@ class UserController extends Controller
         $user->email = $request->input('email');
         $user->balance = $request->input('balance');
         $user->save();
-        return redirect('home')->with('updatedata', 'Successfully Updated');;
+        return redirect('home')->with('updateData', 'Your profile is successfully updated');;
+    }
+
+    public function updateAdminProfile(Request $request)
+    {
+        $user = User::find($request->id);
+        $user->id = $request->input('id');
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->balance = $request->input('balance');
+        $user->save();
+        return redirect('dashboard')->with('updateData', 'Successfully Updated');;
     }
 }

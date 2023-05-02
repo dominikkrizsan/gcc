@@ -16,7 +16,6 @@
           <!-- Form -->
           <form  method="POST" action="{{ route('register') }}" class="mt-4">
             @csrf
-
             <div class="col-md-6">
                 <label class="mb-2 block text-xs font-semibold">Name</label>
                 <input id="name" type="text" placeholder="Enter your username" class="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500" @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>

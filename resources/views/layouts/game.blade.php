@@ -21,6 +21,8 @@
         <meta name="csrf-token" content="{{ csrf_token() }}" />
         <!-- Scripts -->
         @vite('resources/css/app.css')
+        <!-- JQuery modal -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     </head>
 <body>
     <div class="bg-zinc-600 text-xl py-3 border-b border-sky-300">
@@ -35,13 +37,20 @@
             </div>
            
             <div class="justify-self-end flex items-center gap-6">
-                <div class="flex items-center gap-1 uppercase text-sky-400 hover:text-sky-500 ease-in duration-100">
-                    <a href="{{ url('all-games') }}">recent games</a>
-                    <i class="fa-solid fa-file-signature fa-lg"></i>
-                </div>
-                <div class="flex items-center gap-2 py-2 px-3 bg-zinc-500 rounded-xl border border-zinc-400">
-                    <i class="fa-solid fa-user-ninja fa-xl text-sky-400"></i>
-                    <p>{{ Auth::user()->name }}</p>
+                <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="justify-self-end max-[550px]:w-max text-xl text-white bg-zinc-500 focus:ring-4 focus:outline-none focus:ring-sky-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:focus:ring-sky-800" type="button"><p><i class="fa-solid fa-user-ninja text-sky-400 fa-xl mr-3"></i>{{ Auth::user()->name }}</p> <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                <!-- Dropdown menu -->
+                <div id="dropdown" class="z-10 hidden bg-white text-xl divide-y divide-zinc-100 rounded-lg shadow w-44 bg-zinc-700">
+                    <ul class="py-2 text-lg text-white" aria-labelledby="dropdownDefaultButton">
+                        <li>
+                            <a href="{{ url('combine-cards') }}" class="block px-4 py-2 hover:bg-zinc-600 hover:text-white"><i class="fa-solid fa-pen-ruler mr-3"></i></i>Craft Deck Card</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('all-games') }}" class="block px-4 py-2 hover:bg-zinc-600 hover:text-white"><i class="fa-solid fa-file-signature mr-3"></i></i>Recent Games</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('home')}}" class="block px-4 py-2 hover:bg-zinc-600 hover:text-white"><i class="fa-solid fa-shop-lock mr-3"></i></i>Return to shop</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -53,5 +62,6 @@
     <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 </body>
 </html>

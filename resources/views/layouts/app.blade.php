@@ -36,7 +36,7 @@
             </div>
             
             <div class="flex items-center gap-4 justify-self-end">
-                <a class="text-sky-400 hover:text-sky-500 ease-in duration-100 flex items-center gap-2 uppercase" href="{{ url('choose-tier')}}"><i class="fa-solid fa-gamepad"></i>Play</a>
+                <a class="text-sky-400 hover:text-sky-500 ease-in duration-100 flex items-center gap-2 uppercase bg-zinc-500 py-2 px-3 rounded-xl hover:bg-zinc-700 hover:text-sky-300 ease-in duration-200" href="{{ url('choose-tier')}}"><i class="fa-solid fa-gamepad"></i>Play</a>
             
                 <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="justify-self-end max-[550px]:w-max text-xl text-white bg-zinc-500 focus:ring-4 focus:outline-none focus:ring-sky-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:focus:ring-sky-800" type="button"><p><i class="fa-solid fa-user-tie text-sky-400 fa-xl mr-3"></i>{{ Auth::user()->name }}</p> <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                 <!-- Dropdown menu -->
@@ -74,6 +74,22 @@
     <main class="w-max mx-auto text-xl">
         @yield('content')
     </main>
+    {{-- if deck is empty cant click on game --}}
+    @if (session('emptyDeckError'))
+        <script>
+            setTimeout(function () {
+                $("#emptyDeckError").fadeOut("fast");
+            }, 2500); // <-- time in milliseconds
+        </script>
+        <div id="emptyDeckError" class="fixed top-fourty left-fourty flex flex-col gap-4 text-xl items-center bg-zinc-300 rounded-xl justify-center h-64 w-80 border-2 border-red-400 shadow-2xl">
+            <div class="flex items-center gap-4">
+                <i class="fa-solid fa-triangle-exclamation fa-2xl text-red-500 mb-3"></i>
+                <i class="fa-solid fa-inbox fa-2xl text-sky-500 mb-3"></i>
+            </div>
+            <p class="font-bold text-red-500">{{ session("emptyDeckError") }}</p>
+        </div>
+    @endif 
+    {{-- scripts --}}
     <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

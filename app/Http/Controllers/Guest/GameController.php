@@ -16,6 +16,10 @@ class GameController extends Controller
 {
     public function index()
     {
+        $deck = Deck::where('user_id', Auth::user()->id)->first();
+        if ($deck === null) {
+            return redirect()->back()->with('emptyDeckError', 'Your Deck is empty, craft a card first!');
+        }
         $showBots = Bot::all();
         return view('guest.game.index', compact('showBots'));
     }
@@ -37,6 +41,9 @@ class GameController extends Controller
         $game->result = $req->input('result');
         $game->balanceget = $req->input('balanceget');
         $game->save();
+        $user = User::where('id', Auth::user()->id)->first();
+        $user->balance += $req->input('balanceget');
+        $user->save();
         return redirect('game-result');
     }
 
@@ -48,7 +55,17 @@ class GameController extends Controller
 
     public function allGames()
     {
+        $win = Game::where('user_id', Auth::user()->id)->where('result', 'player')->count();
+        $lose = Game::where('user_id', Auth::user()->id)->where('result', 'bot')->count();
         $game = Game::where('user_id', Auth::user()->id)->orderby('id', 'DESC')->take(30)->get();
-        return view('guest.game.games', compact('game'));
+        return view('guest.game.games', compact('game', 'win', 'lose'));
+    }
+
+    // for admin
+
+    public function adminAllGames()
+    {
+        $game = Game::orderby('id', 'DESC')->get();
+        return view('admin.game.index', compact('game'));
     }
 }

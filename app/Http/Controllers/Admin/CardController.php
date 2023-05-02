@@ -13,6 +13,7 @@ class CardController extends Controller
     public function index()
     {
         $cards = Card::orderBy('id', 'DESC')->get();
+        //$cards = Card::search(request(key: 'search'));
         return view('admin.card.index', compact('cards'));
     }
 

@@ -13,15 +13,16 @@
                 <a class="bg-zinc-500 py-1 px-2 rounded-xl uppercase text-white hover:bg-zinc-600 ease-in duration-100" href="{{ url('confirm-sell/'.$item->cards->id) }}">sell for <span class="text-red-400">{{ $item->cards->price / 2 }}<i class="fa-solid fa-coins ml-1"></i></span></a>
                 <div style="background-image:linear-gradient(to bottom right, #9ca3af , #111827);'" class="flex flex-col rounded-xl border border-zinc-700 bg-zinc-600 py-3 px-4 w-card text-xl text-white">
                     @if (session('confirmSell'.$item->cards->id))
-                        <div class="fixed top-1/3 left-1/3 flex flex-col gap-4 text-xl items-center bg-zinc-500 border border-red-500 rounded-xl justify-center h-64 w-80">
-                        <i class="fa-solid fa-money-bill-transfer text-4xl"></i>
-                        <p>Are you sure you want to sell?</p>
-                        <div class="flex items-center gap-4">
-                            <a class="py-1 px-2 bg-zinc-200 uppercase text-zinc-700 rounded-xl hover:bg-zinc-100 hover:border hover:border-sky-500 ease-in duration-100" href="{{ url('inventory') }}">cancel</a>
-                            <a class="py-1 px-2 bg-zinc-200 uppercase text-red-500 rounded-xl hover:bg-zinc-100 hover:border hover:border-red-500 ease-in duration-100" href="{{ url('sell-from-inventory/'.$item->cards->id) }}">sell</a>
+                        <div class="fixed top-fourty left-fourty flex flex-col gap-4 text-xl items-center bg-zinc-300 rounded-xl justify-center h-64 w-80 border-2 border-sky-300">
+                            <i class="fa-solid fa-money-bill-transfer text-4xl text-sky-500"></i>
+                            <p class="text-2xl text-sky-500 font-bold">Are you sure you want to sell?</p>
+                            <div class="flex items-center gap-4">
+                                <a class="py-1 px-2 bg-zinc-200 uppercase text-zinc-700 rounded-xl hover:bg-zinc-100 ease-in duration-100" href="{{ url('inventory') }}">cancel</a>
+                                <a class="py-1 px-2 bg-zinc-200 uppercase text-red-500 rounded-xl hover:bg-zinc-100 ease-in duration-100" href="{{ url('sell-from-inventory/'.$item->cards->id) }}">sell</a>
+                            </div>
                         </div>
-                    </div>
                     @endif
+                    
                     <div class="font-medium mb-2 ml-1">{{ $item->cards->name }}</div>
                     <div>
                         <img
@@ -76,8 +77,10 @@
             $("#sellData").fadeOut("fast");
         }, 1500); // <-- time in milliseconds
     </script>
-    <div id="sellData" class="fixed top-1/3 left-1/3 flex flex-col gap-4 text-xl items-center bg-zinc-500 border border-red-500 rounded-xl justify-center h-64 w-80">
-        <p>{{ session("sellData") }}</p>
+    <div id="sellData" class="fixed top-fourty left-fourty flex flex-col gap-4 text-xl items-center bg-zinc-300 rounded-xl justify-center h-64 w-80 border-2 border-sky-300">
+        <p class="text-2xl font-bold text-sky-500">{{ session("sellData") }}</p>
     </div>
     @endif
+
+    
 @endsection

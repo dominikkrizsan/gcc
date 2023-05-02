@@ -49,6 +49,10 @@
             </div>
         </div>
         <div class="border-b border-zinc-500 w-full my-3"></div>
+        <a href="{{ url('dashboard') }}" class="flex items-center gap-3 rounded-3xl hover:bg-sky-500 py-3 px-2 w-full justify-start pl-5 ease-in duration-200 {{ Request::is('dashboard') ? 'bg-zinc-600' : 'hover:bg-sky-500';}}">
+            <i class="fa-solid fa-signal text-2xl"></i>
+            <p>Stats</p>
+        </a>
         <a href="{{ url('users') }}" class="flex items-center gap-3 rounded-3xl hover:bg-sky-500 py-3 px-2 w-full justify-start pl-5 ease-in duration-200 {{ Request::is('users') ? 'bg-zinc-600' : 'hover:bg-sky-500';}}">
             <i class="fa-solid fa-users text-2xl"></i>
             <p>Users</p>
@@ -65,7 +69,11 @@
             <i class="fa-brands fa-android text-2xl"></i>
             <p>Bots</p>
         </a>
-        <a href="" class="flex items-center gap-3 rounded-3xl hover:bg-sky-500 py-3 px-2 w-full justify-start pl-5 ease-in duration-200 {{ Request::is('account') ? 'bg-zinc-600' : 'hover:bg-sky-500';}}">
+        <a href="{{ url('show-all-games') }}" class="flex items-center gap-3 rounded-3xl hover:bg-sky-500 py-3 px-2 w-full justify-start pl-5 ease-in duration-200 {{ Request::is('show-all-games') ? 'bg-zinc-600' : 'hover:bg-sky-500';}}">
+            <i class="fa-solid fa-gamepad text-2xl"></i>
+            <p>Games</p>
+        </a>
+        <a href="{{ url('edit-admin-profile') }}" class="flex items-center gap-3 rounded-3xl hover:bg-sky-500 py-3 px-2 w-full justify-start pl-5 ease-in duration-200 {{ Request::is('edit-admin-profile') ? 'bg-zinc-600' : 'hover:bg-sky-500';}}">
             <i class="fa-solid fa-file-shield text-2xl"></i>
             <p>Account</p>
         </a>

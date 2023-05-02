@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\CartController;
 use App\Http\Controllers\Admin\BotController;
 use App\Http\Controllers\Guest\FrontendController;
 use App\Http\Controllers\Guest\InventoryController;
+use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Guest\DeckController;
 use App\Http\Controllers\Guest\GameController;
 
@@ -27,7 +28,12 @@ use App\Http\Controllers\Guest\GameController;
 //----------------------admin
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
-    Route::get('/dashboard', [UserController::class, 'userCount']);
+    Route::get('/dashboard', [UserController::class, 'countData']);
+    // edit profile
+    Route::get('edit-admin-profile', function () {
+        return view('admin.edit-admin');
+    });
+    Route::post('update-admin-profile', [UserController::class, 'updateAdminProfile']);
     // categories
     Route::get('/categories', [CategoryController::class, 'index']);
     Route::get('add-category', [CategoryController::class, 'add']);
@@ -59,18 +65,26 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::put('update-bot/{id}', [BotController::class, 'updateBot']);
     Route::get('delete-bot/{id}', [BotController::class, 'destroyBot']);
     Route::get('confirm-bot-delete/{id}', [BotController::class, 'confirmBotDelete']);
+    // game
+    Route::get('show-all-games', [GameController::class, 'adminAllGames']);
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WelcomeController::class, 'welcome']);
+Route::get('/the-shop', [WelcomeController::class, 'shop']);
+Route::get('/the-game', [WelcomeController::class, 'game']);
 
 // guest ---------- all added -> admin/categories guest/all-categories
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/home', [FrontendController::class, 'index'])->name('home');
     Route::get('/all-categories', [FrontendController::class, 'showCategories']);
-    Route::get('/all-cards', [FrontendController::class, 'showAllCards']);
+    Route::get('/all-cards', [FrontendController::class, 'showAllCards'])->name('all-cards');
+    // sort cards !! name asc on default show
+    Route::get('/filter-name-desc', [FrontendController::class, 'allCardsSortNameDesc']);
+    Route::get('/filter-latest', [FrontendController::class, 'allCardsSortLatest']);
+    Route::get('/filter-oldest', [FrontendController::class, 'allCardsSortOldest']);
+    // search cards
+    Route::get('/search-cards', [FrontendController::class, 'searchCards']);
 
     // edit and update user profile
     Route::get('edit-user-profile', function () {

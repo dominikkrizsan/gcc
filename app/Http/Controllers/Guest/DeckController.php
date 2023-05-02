@@ -38,6 +38,12 @@ class DeckController extends Controller
         Deck::where('user_id', Auth::user()->id)->delete();
         $car = Card::where('id', $req->car)->first();
         $tuning = Card::where('id', $req->tuning)->first();
+        if ($car === null) {
+            return redirect()->back()->with('emptyCarCardError', "Your didn't choose a car card!");
+        }
+        if ($tuning === null) {
+            return redirect()->back()->with('emptyTuningCardError', "Your didn't choose a tuning card!");
+        }
         $engineCategory = Category::where('slug', 'engine_swap')->first();
         $newcard = new Deck();
         $newcard->image = $car->image;
@@ -129,7 +135,10 @@ class DeckController extends Controller
 
     public function viewdeck()
     {
-        $deck = Deck::first();
+        $deck = Deck::where('user_id', Auth::user()->id)->first();
+        if ($deck === null) {
+            return redirect()->back()->with('emptyDeckError', 'Your Deck is empty, craft a card first!');
+        }
         return view('guest.deck.index', compact('deck'));
     }
 }

@@ -13,11 +13,11 @@ class CartController extends Controller
 {
     public function addCard(Request $request)
     {
-        // where('user_id', Auth::user()->id)->
+
         $card_id = $request->card_id;
         if (Auth::check()) {
             $card_check = Card::where('id', $card_id)->first();
-            if (Inventory::where('card_id', $card_id)->exists()) {
+            if (Inventory::where('card_id', $card_id)->where('user_id', Auth::user()->id)->exists()) {
                 return response()->json(['status' => 'Card is already in inventory']);
             } else {
                 if ($card_check) {

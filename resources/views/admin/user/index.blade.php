@@ -43,7 +43,7 @@
                     {{ $item->balance }}
                 </td>
                 <td class="px-6 py-4">
-                    {{ $item->role_as }}
+                    {{ $item->role_as == '0' ? 'User' : 'Admin' }}
                 </td>
                 <td class="px-6 py-4">
                     <a class="hover:text-sky-300 ease-in duration-100" href="{{ url('edit-user/'.$item->id) }}">Edit</a>
@@ -86,16 +86,4 @@
         <p>{{ session("deleteUserData") }}</p>
     </div>
 @endif 
-
-{{-- @if (session('confirmUserDelete'))
-    <div class="fixed top-1/3 left-2/4 flex flex-col gap-4 text-xl items-center bg-zinc-100 rounded-xl justify-center h-64 w-80">
-        <i class="fa-solid fa-trash fa-2xl text-zinc-500"></i>
-        <p>{{ session("confirmUserDelete") }}</p>
-        <div class="uppercase flex items-center gap-5">
-        <a class="text-sky-600 bg-zinc-300 hover:text-sky-500 ease-in duration-100 py-2 px-3 rounded-xl" href="{{ url('users') }}">cancel</a>
-        <a class="text-red-600 bg-zinc-300 hover:text-red-500 ease-in duration-100 py-2 px-3 rounded-xl" href="{{ url('delete-user/'.$item->id) }}">delete</a>
-        <p>{{$item->id}}</p>
-    </div>
-    </div>
-@endif  --}}
- @endsection
+@endsection

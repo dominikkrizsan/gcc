@@ -1,3 +1,10 @@
 * {
     font-family: "Oswald", sans-serif;
 }
+
+.bg-class-lose {
+    background-image: linear-gradient(to bottom right, red, #3f3f46);
+}
+.bg-class-win {
+    background-image: linear-gradient(to bottom right, #10b981, #3f3f46);
+}

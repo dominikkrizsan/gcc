@@ -2,11 +2,46 @@
 @section('content')
     <div class="w-128 mx-auto p-5 bg-zinc-100 rounded-2xl mt-3 border border-zinc-300 hover:border-zinc-400 hover:shadow-lg ease-in duration-200 mb-5">
         <h1 class="text-sky-500 text-center font-bold text-3xl mb-5">Choose your Tier</h1>
+        
+        <!-- modal -->
+        <div id="ex1" class="modal">
+            <div class="flex flex-col items-center gap-4 text-2xl mt-3">
+                <h1 class="font-bold text-sky-500">Best of 3 game</h1>
+                <div class="flex flex-col items-center gap-2">
+                    <p>1st condition:</p>
+                    <p class="text-center">The game adds your hp and tq matches with the bot's hp and tq sum (1st of the 3)</p>
+                </div>
+                <div class="flex flex-col items-center gap-2">
+                    <p>2nd condition:</p>
+                    <p class="text-center">Adds your 0-100 and 1/4 mile time, same for the bot (2nd of the 3)</p>
+                </div>
+                <div class="flex flex-col items-center gap-2">
+                    <p>3rd condition:</p>
+                    <p class="text-center">Matches your P to W with the bot's P to W <br> (3rd of the 3)</p>
+                </div>
+                <p class="mb-5 text-center">You can get results like 3-0 | 2-1 | 1-2 | 0-3</p>
+                <div class="grid grid-cols-2 items-center justify-items-center gap-4">
+                    <p>Level 1: 50 <i class="fa-solid fa-coins text-emerald-500"></i></p>
+                    <p>Level 2: 75 <i class="fa-solid fa-coins text-emerald-500"></i></p>
+                    <p>Level 3: 100 <i class="fa-solid fa-coins text-emerald-500"></i></p>
+                    <p>Level 4: 150 <i class="fa-solid fa-coins text-emerald-500"></i></p>
+                    
+                </div>
+                <p class="mb-5">Level 5: 300 <i class="fa-solid fa-coins text-emerald-500"></i></p>
+                <a class="py-2 px-3 bg-red-500 rounded-xl hover:bg-red-600 text-white ease-in duration-100 text-xl" href="#" rel="modal:close">Close</a>
+            </div>
+        </div>
+
+        <!-- open modal -->
+        <div class="flex flex-col items-center">
+            <a class="mx-auto capitalize flex items-center gap-2 mb-3 text-zinc-600 py-1 px-2 rounded-xl hover:bg-zinc-200 hover:text-zinc-900 ease-in duration-100" href="#ex1" rel="modal:open">how the game works<i class="fa-solid fa-circle-info text-sky-500"></i></a>
+        </div>
+
         <div class="grid grid-cols-choose_bot uppercase text-xl mt-3">
             <p class="text-center">bot level</p>
             <p class="text-center">bot name / bot profile picture / bot card / choose to play</p>
         </div>
-        <p class="text-center text-red-500">magyarazat mit csinal a game miket nez</p>
+
         @foreach ($showBots as $item)
             <div class="grid grid-cols-choose_bot">
                 <div class="flex items-center justify-center">

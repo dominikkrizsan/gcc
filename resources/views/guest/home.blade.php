@@ -69,4 +69,18 @@
        
     </div>
 </div>
+
+@if (session('updateData'))
+    <script>
+        setTimeout(function () {
+            $("#updateData").fadeOut("fast");
+        }, 2000); // <-- time in milliseconds
+    </script>
+    <div id="updateData" class="fixed top-fourty left-fourty flex flex-col gap-4 text-xl items-center bg-zinc-300 rounded-xl justify-center h-64 w-80 border-2 border-sky-300">
+        <div class="flex items-center gap-4">
+            <i class="fa-solid fa-square-check fa-2xl text-sky-500 mb-3"></i>
+        </div>
+        <p class="font-bold">{{ session("updateData") }}</p>
+    </div>
+@endif 
 @endsection

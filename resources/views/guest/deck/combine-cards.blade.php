@@ -9,7 +9,7 @@
     </div>
     <div class="flex items-center justify-center gap-4 my-2">
         <i class="fa-solid fa-file-circle-exclamation text-3xl text-sky-500"></i>
-        <p class="text-center text-xl">You can use <span class="text-sky-500">1 car card</span> and <span class="text-sky-500">2 tuning cards</span> for your craft</p>
+        <p class="text-center text-xl">You can use <span class="text-sky-500">1 car card</span> and <span class="text-sky-500">1 tuning card</span> for your craft</p>
     </div>
     <div class="flex items-center justify-center gap-4 my-2">
         <i class="fa-solid fa-triangle-exclamation text-3xl text-sky-500"></i>
@@ -122,38 +122,34 @@
     <input class="uppercase text-2xl mt-8 mb-2 py-3 px-4 border border-zinc-300 bg-sky-500 hover:bg-sky-400 hover:border-zinc-500 self-center text-white rounded-2xl ease-in duration-200 cursor-pointer" type="submit" value="craft" name="" id="">
 </form>
 
-<script>
-    $(".car").change(function() {
-        if (this.checked) {
-            //style when check
-            if ($('.car').filter(':checked')) {
-                $(this).parent().css("background-color", "#7dd3fc");
-            }
-            //error
-            if (($('.car').filter(':checked').length) > 1) {
-                $('.car').prop('checked', false);
-                swal("You can only choose ONE car card", "", "error");
-                $('.car').parent().css("background-color", "#fafafa");
-            }
-        } else {
-            $(this).parent().css("background-color", "#fafafa");
-        }
-    });
-    $(".tuning").change(function() {
-        if (this.checked) {
-            //style when check
-            if ($('.tuning').filter(':checked')) {
-                $(this).parent().css("background-color", "#7dd3fc");
-            }
-            //error
-            if (($('.tuning').filter(':checked').length) > 1) {
-                $('.tuning').prop('checked', false);
-                swal("You can only choose ONE tuning cards", "", "error");
-                $('.tuning').parent().css("background-color", "#fafafa");
-            }
-        } else {
-            $(this).parent().css("background-color", "#fafafa");
-        }
-    });
-</script>
+@if (session('emptyCarCardError'))
+    <script>
+        setTimeout(function () {
+            $("#emptyCarCardError").fadeOut("fast");
+        }, 2500); // <-- time in milliseconds
+    </script>
+    <div id="emptyCarCardError" class="fixed top-fourty left-fourty flex flex-col gap-4 text-xl items-center bg-zinc-300 rounded-xl justify-center h-64 w-80 border-2 border-red-300">
+        <div class="flex items-center gap-4">
+            <i class="fa-solid fa-triangle-exclamation fa-2xl text-red-500 mb-3"></i>
+            <i class="fa-solid fa-car-side fa-2xl text-sky-500 mb-3"></i>
+        </div>
+        <p class="font-bold text-red-500">{{ session("emptyCarCardError") }}</p>
+    </div>
+@endif 
+@if (session('emptyTuningCardError'))
+    <script>
+        setTimeout(function () {
+            $("#emptyTuningCardError").fadeOut("fast");
+        }, 2500); // <-- time in milliseconds
+    </script>
+    <div id="emptyTuningCardError" class="fixed top-fourty left-fourty flex flex-col gap-4 text-xl items-center bg-zinc-300 rounded-xl justify-center h-64 w-80 border-2 border-red-300">
+        <div class="flex items-center gap-4">
+            <i class="fa-solid fa-triangle-exclamation fa-2xl text-red-500 mb-3"></i>
+            <i class="fa-solid fa-bolt-lightning fa-2xl text-sky-500 mb-5"></i>
+        </div>
+        <p class="font-bold text-red-500">{{ session("emptyTuningCardError") }}</p>
+    </div>
+@endif 
+
+<script src="{{asset('js/combine-cards.js')}}"></script>
 @endsection

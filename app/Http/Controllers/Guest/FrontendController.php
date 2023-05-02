@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Card;
+use App\Models\User;
 
 class FrontendController extends Controller
 {
@@ -17,6 +18,7 @@ class FrontendController extends Controller
         $trending_category = Category::where('popular', '1')->take(3)->get();
         return view('guest.home', compact('featured_cards', 'trending_category'));
     }
+
     // all categories
     public function showCategories()
     {
@@ -36,12 +38,42 @@ class FrontendController extends Controller
         }
     }
 
+    //all cards
     public function showAllCards()
+    {
+        $cards = Card::orderBy('name', 'ASC')->where('status', '1')->get();
+        return view('guest.shop.cards', compact('cards'));
+    }
+
+    //sort cards
+    public function allCardsSortNameDesc()
+    {
+        $cards = Card::orderBy('name', 'DESC')->where('status', '1')->get();
+        return view('guest.shop.cards', compact('cards'));
+    }
+
+    public function allCardsSortLatest()
     {
         $cards = Card::orderBy('id', 'DESC')->where('status', '1')->get();
         return view('guest.shop.cards', compact('cards'));
     }
 
+    public function allCardsSortOldest()
+    {
+        $cards = Card::orderBy('id', 'ASC')->where('status', '1')->get();
+        return view('guest.shop.cards', compact('cards'));
+    }
+
+    //search cards
+    public function searchCards()
+    {
+        $search = $_GET['query'];
+        $cards = Card::where('name', 'LIKE', '%' . $search . '%')->with('category')
+            ->get();
+        return view('guest.shop.cards', compact('cards'));
+    }
+
+    //cardview
     public function cardview($category_slug, $card_slug)
     {
         if (Category::where('slug', $category_slug)->exists()) {
