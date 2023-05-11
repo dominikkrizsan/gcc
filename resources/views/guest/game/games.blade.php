@@ -10,9 +10,9 @@
         </div>
         <div class="grid grid-cols-2 gap-8">
         @forelse ($game as $item)
-            <div class="@if($item->result=='bot') bg-class-lose @else bg-class-win @endif grid grid-cols-2 items-center capitalize mt-5 gap-8 text-2xl bg-zinc-200 p-5 rounded-2xl border border-zinc-300 hover:shadow-2xl hover:border-zinc-400 ease-in duration-200">
+            <div class="@if($item->result=='bot') bg-class-lose @else bg-class-win @endif grid grid-cols-2 items-center capitalize mt-5 gap-8 text-2xl text-white bg-zinc-200 p-5 rounded-2xl border border-zinc-300 hover:shadow-2xl hover:border-zinc-400 ease-in duration-200">
                 <p>player</p>
-                <p class="text-sky-500">{{ $item->user->name}}</p>
+                <p>{{ $item->user->name}}</p>
                 <p>bot</p>
                 <div class="flex gap-4 items-center">
                     <img class="w-20 rounded-2xl border border-zinc-300" src="{{ asset('./assets/uploads/bots/'.$item->bot->image) }}" alt="">

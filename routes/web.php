@@ -80,7 +80,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/all-categories', [FrontendController::class, 'showCategories']);
     Route::get('/all-cards', [FrontendController::class, 'showAllCards'])->name('all-cards');
     // sort cards !! name asc on default show
-    Route::get('/filter-name-desc', [FrontendController::class, 'allCardsSortNameDesc']);
+    Route::get('/filter-price-desc', [FrontendController::class, 'allCardsSortPriceDesc']);
+    Route::get('/filter-price-asc', [FrontendController::class, 'allCardsSortPriceAsc']);
     Route::get('/filter-latest', [FrontendController::class, 'allCardsSortLatest']);
     Route::get('/filter-oldest', [FrontendController::class, 'allCardsSortOldest']);
     // search cards

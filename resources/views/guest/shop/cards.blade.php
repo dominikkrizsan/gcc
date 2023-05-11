@@ -24,12 +24,12 @@
         </form>
         <div class="flex items-center gap-8 capitalize">
             <div class="flex flex-col items-center gap-2 uppercase text-white">
-                <a class="py-1 px-2 bg-sky-400 rounded-xl hover:bg-sky-500 hover:shadow ease-in duration-100" href="{{ url('all-cards')}}">name asc <i class="fa-solid fa-arrow-up-9-1"></i></a>
-                <a class="py-1 px-2 bg-sky-400 rounded-xl hover:bg-sky-500 hover:shadow ease-in duration-100" href="{{ url('filter-name-desc')}}">name desc <i class="fa-solid fa-arrow-down-9-1"></i></a>
+                <a class="py-1 px-2 bg-sky-400 rounded-xl hover:bg-sky-500 hover:shadow ease-in duration-100" href="{{ url('filter-price-asc')}}">price asc <i class="fa-solid fa-arrow-up-9-1"></i></a>
+                <a class="py-1 px-2 bg-sky-400 rounded-xl hover:bg-sky-500 hover:shadow ease-in duration-100" href="{{ url('filter-price-desc')}}">price desc <i class="fa-solid fa-arrow-down-9-1"></i></a>
             </div>
             <div class="flex flex-col gap-3 items-center">
                 <i class="fa-solid fa-file-signature fa-xl"></i>
-                <p>sort by name</p>
+                <p>sort by price</p>
             </div>
         </div>
     </div>

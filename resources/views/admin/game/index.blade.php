@@ -1,7 +1,11 @@
 @extends('layouts.admin')
 @section('content')
-<div class="flex justify-center items-end gap-4 text-sky-500 font-bold mb-3 mt-5">
-    <h1 class="text-3xl mt-3">All games</h1>
+<div class="flex flex-col justify-center items-center gap-4 font-bold mb-3 mt-5">
+    <h1 class="text-3xl mt-3 text-sky-500">All games</h1>
+    <div class="mx-auto flex items-center text-2xl justify-center gap-8 my-3 font-bold py-2 px-3 bg-zinc-300 rounded-xl border border-sky-200">
+        <p>Games won by players: <span class="text-sky-500">{{ $playerwins }}</span> <i class="fa-solid fa-user-ninja text-3xl ml-2"></i></p>
+        <p>Games win by bots: <span class="text-sky-500">{{ $botwins }}</span> <i class="fa-brands fa-android text-3xl ml-2"></i></p>
+    </div>
 </div>
 <div class="grid grid-cols-2 w-max mx-auto gap-6 border border-zinc-400 shadow-xl bg-zinc-300 py-4 px-5 rounded-xl mt-5 mb-5">
     @forelse ($game as $item)
@@ -23,7 +27,7 @@
                 <p>result</p>
                 <p>{{ $item->score}}</p>
                 <p class="flex items-center gap-2">winner<i class="fa-solid fa-crown text-amber-500"></i></p>
-                <p class="flex items-center gap-2">{{ $item->result}}<i class="fa-solid fa-user-ninja text-sky-500"></i></p>
+                <p class="flex items-center gap-2">{{ $item->result}}</p>
                 <p>credit+</p>
                 <p class="text-emerald-500 flex items-center gap-2">{{ $item->balanceget}} <i class="fa-solid fa-coins"></i></p>
             </div>

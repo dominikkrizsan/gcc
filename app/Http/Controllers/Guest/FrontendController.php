@@ -46,9 +46,15 @@ class FrontendController extends Controller
     }
 
     //sort cards
-    public function allCardsSortNameDesc()
+    public function allCardsSortPriceDesc()
     {
-        $cards = Card::orderBy('name', 'DESC')->where('status', '1')->get();
+        $cards = Card::orderBy('price', 'DESC')->where('status', '1')->get();
+        return view('guest.shop.cards', compact('cards'));
+    }
+
+    public function allCardsSortPriceAsc()
+    {
+        $cards = Card::orderBy('price', 'ASC')->where('status', '1')->get();
         return view('guest.shop.cards', compact('cards'));
     }
 

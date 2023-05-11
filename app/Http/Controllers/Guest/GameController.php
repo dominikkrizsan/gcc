@@ -65,7 +65,9 @@ class GameController extends Controller
 
     public function adminAllGames()
     {
+        $botwins = Game::where('result', 'bot')->count();
+        $playerwins = Game::where('result', 'player')->count();
         $game = Game::orderby('id', 'DESC')->get();
-        return view('admin.game.index', compact('game'));
+        return view('admin.game.index', compact('game', 'botwins', 'playerwins'));
     }
 }

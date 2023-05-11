@@ -51,9 +51,9 @@
                 </td>
             </tr>
             @if (session('confirmUserDelete'.$item->id))
-                <div class="fixed top-1/3 left-2/4 flex flex-col gap-4 text-xl items-center bg-zinc-100 rounded-xl justify-center h-64 w-80">
-                    <i class="fa-solid fa-trash fa-2xl text-zinc-500"></i>
-                    <p>{{ session("confirmUserDelete") }}</p>
+                <div class="fixed top-1/3 left-2/4 flex flex-col gap-2 text-xl items-center bg-zinc-100 rounded-xl justify-center h-64 w-80 border-2 border-red-300">
+                    <i class="fa-solid fa-trash text-4xl text-zinc-500"></i>
+                    <p class="mb-5 mt-3">Are you sure you want to delete?</p>
                     <div class="uppercase flex items-center gap-5">
                         <a class="text-sky-600 bg-zinc-300 hover:text-sky-500 ease-in duration-100 py-2 px-3 rounded-xl" href="{{ url('users') }}">cancel</a>
                         <a class="text-red-600 bg-zinc-300 hover:text-red-500 ease-in duration-100 py-2 px-3 rounded-xl" href="{{ url('delete-user/'.$item->id) }}">delete</a>
@@ -70,7 +70,7 @@
             $("#updatedata").fadeOut("fast");
         }, 1500); // <-- time in milliseconds
     </script>
-    <div id="updatedata" class="fixed top-1/3 left-2/4 flex flex-col gap-4 text-xl items-center bg-zinc-100 rounded-xl justify-center h-64 w-80">
+    <div id="updatedata" class="fixed top-1/3 left-2/4 flex flex-col gap-2 text-xl items-center bg-zinc-100 rounded-xl justify-center h-64 w-80 border-2 border-emerald-400">
         <i class="fa-solid fa-square-check fa-2xl text-emerald-500 mb-3"></i>
         <p>{{ session("updatedata") }}</p>
     </div>
@@ -82,7 +82,7 @@
             $("#deleteUserData").fadeOut("fast");
         }, 1500); // <-- time in milliseconds
     </script>
-    <div id="deleteUserData" class="fixed top-1/3 left-2/4 flex flex-col gap-4 text-xl items-center bg-zinc-100 rounded-xl justify-center h-64 w-80">
+    <div id="deleteUserData" class="fixed top-1/3 left-2/4 flex flex-col gap-2 text-xl items-center bg-zinc-100 rounded-xl justify-center h-64 w-80 border-2 border-emerald-400">
         <p>{{ session("deleteUserData") }}</p>
     </div>
 @endif 

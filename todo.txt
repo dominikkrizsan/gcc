@@ -7,3 +7,7 @@ responsiv everything
     kiveve admin oldal
     
 cardsnal csak azokat listazza amik nincsenek meg benne az inventoryba
+
+
+
+valtoztatas sort by price

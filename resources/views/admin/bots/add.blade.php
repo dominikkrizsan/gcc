@@ -23,7 +23,7 @@
     type="file"
     name="image"
 />
-    <select class="rounded-xl px-1 py-1 w-52 bg-zinc-200 border border-zinc-400" name="card_id" required>
+    <select class="rounded-xl px-1 py-1 w-52 bg-zinc-200 border border-zinc-400 mx-auto" name="card_id" required>
         <option value="">Select Bot Card</option>
         @foreach ($cards as $item)
         <option value="{{ $item->id }}">{{ $item->name }}</option>

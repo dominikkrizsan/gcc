@@ -22,6 +22,7 @@
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
+            background-attachment: fixed;
             height: 100vh;">
     <nav class="w-128 mx-auto flex justify-between py-8 text-lg text-white items-center">
         <div>

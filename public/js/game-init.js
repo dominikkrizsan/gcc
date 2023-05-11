@@ -53,6 +53,7 @@ $(document).ready(function () {
     carptow.css("color", "#e4e4e7");
 
     // result
+    // try ----------------------------
     $("#try").on("click", function () {
         // change to visible
         carhp.css("color", "#3f3f46");
