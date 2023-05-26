@@ -21,10 +21,8 @@ class InventoryController extends Controller
             return response()->json(['status' => 'Not Enough balance']);
         }
         foreach ($cards as $card_id) {
-
             if (Auth::check()) {
                 $card_check = Card::where('id', $card_id)->first();
-
                 if ($card_check) {
                     $invItem = new Inventory();
                     $invItem->card_id = $card_id;
@@ -36,17 +34,15 @@ class InventoryController extends Controller
                 return response()->json(['status' => 'Login to Continue']);
             }
         }
-
         foreach ($cards as $card_id) {
             if (Cart::where('card_id', $card_id)->where('user_id', Auth::id())->exists()) {
                 $cartItem = Cart::where('card_id', $card_id)->where('user_id', Auth::id())->first();
                 $cartItem->delete();
             }
         }
-
         $user->balance -= $request->cost;
         $user->update();
-        return response()->json(['status' => 'buy success']);
+        return response()->json(['status' => 'Purchase succeed']);
     }
 
     public function viewinventory()

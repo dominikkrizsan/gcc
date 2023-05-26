@@ -49,7 +49,7 @@ class UserController extends Controller
         $user->email = $request->input('email');
         $user->balance = $request->input('balance');
         $user->update();
-        return redirect('users')->with('updatedata', 'Successfully Updated');;
+        return redirect('users')->with('updatedata', 'Successfully Updated');
     }
 
     public function destroy($id)

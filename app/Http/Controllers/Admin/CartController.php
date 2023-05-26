@@ -13,7 +13,6 @@ class CartController extends Controller
 {
     public function addCard(Request $request)
     {
-
         $card_id = $request->card_id;
         if (Auth::check()) {
             $card_check = Card::where('id', $card_id)->first();

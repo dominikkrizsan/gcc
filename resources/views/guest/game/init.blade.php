@@ -249,7 +249,6 @@
             <input id="score" type="hidden" name="score" />
             <input id="result" type="hidden" name="result" />
             <input id="balanceget" type="hidden" name="balanceget" />
-            <p id="try">try</p>
         </form>
     </div>
 </div>

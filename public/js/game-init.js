@@ -103,9 +103,9 @@ $(document).ready(function () {
         }
     });
 
-    //----------------------------------------------------------it lesz ha mukodik minden
     // do duel
     $("#do_duel").on("click", function () {
+        // form submission delay by 3000ms
         $("#myForm").submit(function (event) {
             var formId = this.id,
                 form = this;
@@ -164,7 +164,6 @@ $(document).ready(function () {
             });
         }
     });
-    //----------------------------------------------------------it fent lesz ha mukodik minden
 
     // delay form submission
     $("#myForm").submit(function (event) {
